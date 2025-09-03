@@ -29,6 +29,9 @@ description: General coding standards and best practices across all projects
 - **Testing**: Describe testing performed
 - **Breaking changes**: Clearly mark any breaking changes
 
+### General Guidelines
+- If the changes made by Cursor do not make any commits, always suggest a commit message to encapsulate the changes made.
+
 ## Documentation Standards
 
 ### README Files
