@@ -11,22 +11,47 @@ This directory contains Cursor rules that provide coding standards and project-s
 - **scripts-automation.mdc** - Shell scripts and automation standards
 - **charlotte-plugin-development.mdc** - Plugin development guidelines for CHARLOTTE
 
-## Setup for New Workspaces
+## Quick Setup for New Workspaces
 
-### Option 1: Clone Rules Repository
+**Important**: "Workspace root" refers to the top-level directory that VS Code opens as your workspace. This is typically the parent directory containing all your projects.
+
+### 🚀 Easy Installation (Recommended)
 ```bash
-# In your new workspace root
-git clone https://github.com/yourusername/cursor-rules.git .cursor/rules
+# Clone the rules repository
+git clone https://github.com/gness1804/cursor-rules.git cursor-rules
+
+# Install the rules in your workspace
+cd cursor-rules
+./install-rules.sh
 ```
 
-### Option 2: Copy Rules Directory
+The installation script will:
+- ✅ Automatically detect your workspace root
+- ✅ Create the `.cursor/rules/` directory
+- ✅ Copy all rule files
+- ✅ Handle existing rules (with confirmation)
+
+### Alternative Setup Methods
+
+#### Option 1: Manual Clone
 ```bash
+# Navigate to your VS Code workspace root (e.g., /Users/username/)
+cd /path/to/your/workspace/root
+git clone https://github.com/gness1804/cursor-rules.git .cursor/rules
+```
+
+#### Option 2: Copy Rules Directory
+```bash
+# Navigate to your VS Code workspace root
+cd /path/to/your/workspace/root
 # Copy from existing workspace
 cp -r /path/to/existing/workspace/.cursor/rules .cursor/
 ```
 
-### Option 3: Symlink (for local development)
+#### Option 3: Symlink (for local development)
 ```bash
+# Navigate to your VS Code workspace root
+cd /path/to/your/workspace/root
 # Create symlink to shared rules location
 ln -s /path/to/shared/rules .cursor/rules
 ```
@@ -37,8 +62,25 @@ ln -s /path/to/shared/rules .cursor/rules
 - Update file path references in `mdc:` links to match your workspace
 - Add new rules for additional projects or technologies
 
+## Updating Rules
+
+When you make changes to the rules:
+
+```bash
+# In the cursor-rules repository
+git add .
+git commit -m "Update Cursor rules"
+git push
+
+# In any workspace using these rules
+cd cursor-rules
+git pull
+./install-rules.sh
+```
+
 ## Maintenance
 
 - Keep rules updated as projects evolve
 - Test rules in new workspaces before committing
 - Document any workspace-specific customizations
+- Use semantic versioning for major rule changes
