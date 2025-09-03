@@ -1,0 +1,146 @@
+---
+globs: *.sh,*.js,*.py,*.zsh
+description: Shell scripts and automation standards for the scripts collection
+---
+
+# Scripts & Automation Standards
+
+## Shell Script Standards
+
+### General Guidelines
+- **Use shebang**: Always start with appropriate shebang (`#!/bin/bash`, `#!/bin/zsh`, etc.)
+- **Use `set -e`**: Exit on any command failure
+- **Use `set -u`**: Exit on undefined variables
+- **Use `set -o pipefail`**: Exit on pipe failures
+- **Quote variables**: Always quote variables to prevent word splitting
+
+### Script Organization
+- **Location**: Root level scripts directory
+- **Naming**: Use descriptive names (e.g., `addTodo`, `completeTodo`, `showTodos`)
+- **Permissions**: Make scripts executable (`chmod +x script_name`)
+- **Documentation**: Include usage comments at the top
+
+### Error Handling
+```bash
+#!/bin/bash
+set -euo pipefail
+
+# Function to handle errors
+error_exit() {
+    echo "Error: $1" >&2
+    exit 1
+}
+
+# Usage example
+if [ $# -eq 0 ]; then
+    error_exit "Usage: $0 <argument>"
+fi
+```
+
+### Todoist Integration Scripts
+- **API Integration**: Use [@doist/todoist-api-typescript](mdc:package.json) for Todoist API
+- **Authentication**: Store API tokens in environment variables
+- **Error Handling**: Handle API rate limits and network errors gracefully
+- **Output Formatting**: Use consistent output format for all todo operations
+
+### AWS Scripts
+- **Security**: Never hardcode AWS credentials
+- **Use AWS CLI**: Leverage AWS CLI for consistent authentication
+- **Error Handling**: Check AWS CLI exit codes and handle errors
+- **Output**: Use JSON output format for programmatic consumption
+- **Documentation**: Include usage examples and required permissions
+
+## Node.js Script Standards
+
+### Package Management
+- **Dependencies**: Manage via [package.json](mdc:package.json)
+- **Version Control**: Use exact versions for production dependencies
+- **Scripts**: Define common tasks in package.json scripts section
+- **ESLint**: Use configured ESLint rules for code quality
+- **Prettier**: Use Prettier for code formatting
+
+### Code Style
+- **Use ES6+ features**: Arrow functions, destructuring, template literals
+- **Async/Await**: Prefer async/await over callbacks
+- **Error Handling**: Use try/catch blocks for async operations
+- **Logging**: Use appropriate logging levels (console.log, console.error)
+
+### CLI Tools
+- **Use Meow**: For CLI argument parsing (configured in [package.json](mdc:package.json))
+- **Use Chalk**: For colored terminal output
+- **Use Enquirer**: For interactive prompts
+- **Help Text**: Provide clear help text and usage examples
+
+## Python Script Standards
+
+### Code Quality
+- **Use Ruff**: Configured in [pyproject.toml](mdc:pyproject.toml) for linting and formatting
+- **Type Hints**: Use type hints for function parameters and return values
+- **Line Length**: 240 characters (as configured)
+- **Import Organization**: Use Ruff for import sorting
+
+### Script Structure
+```python
+#!/usr/bin/env python3
+"""
+Script description and usage information.
+"""
+
+import sys
+from typing import Optional
+
+def main() -> None:
+    """Main function with proper error handling."""
+    try:
+        # Script logic here
+        pass
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()
+```
+
+### Dependencies
+- **Virtual Environment**: Use virtual environments for Python scripts
+- **Requirements**: Document dependencies in requirements.txt if needed
+- **Standard Library**: Prefer standard library modules when possible
+
+## Utility Scripts
+
+### File Operations
+- **Path Handling**: Use proper path separators and handle edge cases
+- **Backup**: Create backups before destructive operations
+- **Permissions**: Check and set appropriate file permissions
+- **Cross-platform**: Consider Windows/macOS/Linux compatibility
+
+### System Information
+- **Platform Detection**: Use appropriate methods for different operating systems
+- **Resource Usage**: Monitor system resources when running intensive operations
+- **Logging**: Log important operations and errors
+
+## Security Considerations
+- **Input Validation**: Validate all user inputs
+- **Path Traversal**: Prevent directory traversal attacks
+- **Command Injection**: Use proper escaping for shell commands
+- **Sensitive Data**: Never log or expose sensitive information
+- **Permissions**: Run with minimal required permissions
+
+## Testing & Quality
+- **Test Scripts**: Write tests for complex scripts
+- **Dry Run**: Implement dry-run modes for destructive operations
+- **Validation**: Validate inputs and outputs
+- **Documentation**: Include usage examples and error scenarios
+
+## Performance
+- **Efficiency**: Use efficient algorithms and data structures
+- **Resource Usage**: Monitor memory and CPU usage
+- **Parallel Processing**: Use parallel processing when appropriate
+- **Caching**: Implement caching for expensive operations
+
+## Maintenance
+- **Version Control**: Use meaningful commit messages
+- **Changelog**: Update [CHANGELOG.md](mdc:CHANGELOG.md) for significant changes
+- **Deprecation**: Mark deprecated scripts and provide migration paths
+- **Documentation**: Keep documentation up to date

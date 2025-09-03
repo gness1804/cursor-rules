@@ -1,0 +1,76 @@
+---
+globs: C-H-A-R-L-O-T-T-E/**/*.py
+description: Python coding standards and conventions for CHARLOTTE security framework
+---
+
+# CHARLOTTE Python Coding Standards
+
+## Code Style & Formatting
+- **Follow PEP8** strictly
+- **Line length**: 240 characters (as configured in [pyproject.toml](mdc:C-H-A-R-L-O-T-T-E/pyproject.toml))
+- **Use type hints** for all function parameters and return values
+- **Import organization**: Use `ruff` for import sorting and formatting
+- **Use f-strings** for string formatting
+
+## CHARLOTTE-Specific Conventions
+
+### Plugin Development
+- **Entry points**: Use `run(args)` or `run_plugin(args=None)` as the callable entrypoint
+- **Plugin structure**: Each plugin should be single-purpose and chainable
+- **File paths**: Use `output_path = display_path(path)` when outputting file paths
+- **Plugin registration**: Register in [core/plugin_manager.py](mdc:C-H-A-R-L-O-T-T-E/core/plugin_manager.py) PLUGIN_REGISTRY
+
+### Plugin `__init__.py` Structure
+```python
+__all__ = [
+    "plugin_one",
+    "plugin_two", 
+    "plugin_three",
+]
+
+PLUGIN_PKG_VERSION = "0.1.0"  # Replace with appropriate label
+```
+
+### Error Handling & Logging
+- Use the logging system from [utils/logger.py](mdc:C-H-A-R-L-O-T-T-E/utils/logger.py)
+- Handle exceptions gracefully with meaningful error messages
+- Use CHARLOTTE's signature tone in comments (snark optional 😈)
+
+### Security Considerations
+- **Never hardcode credentials** - use configuration files or environment variables
+- **Validate all inputs** before processing
+- **Use secure defaults** for all security-related functions
+- **Follow OWASP guidelines** for web security plugins
+
+### File Organization
+- **Core logic**: Place in [core/](mdc:C-H-A-R-L-O-T-T-E/core/) directory
+- **Plugins**: Organize by category in [plugins/](mdc:C-H-A-R-L-O-T-T-E/plugins/) subdirectories
+- **Utilities**: Common helpers go in [utils/](mdc:C-H-A-R-L-O-T-T-E/utils/)
+- **Tests**: Place in [tests/](mdc:C-H-A-R-L-O-T-T-E/tests/) directory
+
+### Configuration Management
+- Use [core/config.py](mdc:C-H-A-R-L-O-T-T-E/core/config.py) for configuration management
+- Support both self-contained and extended modes
+- Use [personality_config.json](mdc:C-H-A-R-L-O-T-T-E/personality_config.json) for mode settings
+
+### LLM Integration
+- Use [core/llm_interface.py](mdc:C-H-A-R-L-O-T-T-E/core/llm_interface.py) for LLM interactions
+- Support both local and remote LLM providers
+- Implement proper prompt injection handling
+
+### Data Handling
+- Store findings in [data/findings.json](mdc:C-H-A-R-L-O-T-T-E/data/findings.json)
+- Use structured data formats (JSON, CSV) for data exchange
+- Implement proper data validation and sanitization
+
+## Testing Standards
+- Write tests for all new plugins and core functionality
+- Use pytest for testing framework
+- Aim for high test coverage, especially for security-critical code
+- Test both self-contained and extended modes
+
+## Documentation
+- Include docstrings for all public functions and classes
+- Document plugin capabilities and requirements
+- Update [README.md](mdc:C-H-A-R-L-O-T-T-E/README.md) when adding major features
+- Follow the plugin development guide in [docs/plugin_dev_guide.md](mdc:C-H-A-R-L-O-T-T-E/docs/plugin_dev_guide.md)

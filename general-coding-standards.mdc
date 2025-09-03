@@ -1,0 +1,179 @@
+---
+alwaysApply: true
+description: General coding standards and best practices across all projects
+---
+
+# General Coding Standards & Best Practices
+
+## Version Control & Git
+
+### Commit Message Standards
+- **Format**: Use conventional commits format (`type: description`)
+- **Types**: `feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `test:`, `chore:`
+- **Description**: Use imperative mood, lowercase, no period
+- **Examples**:
+  - `feat: add new plugin for vulnerability scanning`
+  - `fix: resolve memory leak in LLM interface`
+  - `docs: update plugin development guide`
+
+### Branch Naming
+- **Feature branches**: `feat/feature-name`
+- **Bug fixes**: `fix/bug-description`
+- **Documentation**: `docs/topic`
+- **Refactoring**: `refactor/component-name`
+
+### Pull Request Standards
+- **Clear title**: Descriptive title explaining the change
+- **Detailed description**: Include what, why, and how
+- **Link issues**: Reference related issues with `Closes #123`
+- **Testing**: Describe testing performed
+- **Breaking changes**: Clearly mark any breaking changes
+
+## Documentation Standards
+
+### README Files
+- **Project overview**: Clear description of purpose and capabilities
+- **Setup instructions**: Step-by-step installation and configuration
+- **Usage examples**: Code examples and common use cases
+- **API documentation**: Document public interfaces
+- **Contributing guidelines**: How others can contribute
+
+### Code Documentation
+- **Function docstrings**: Include purpose, parameters, return values, and examples
+- **Class docstrings**: Describe class purpose and usage
+- **Inline comments**: Explain complex logic and business rules
+- **Type hints**: Use type annotations for better code understanding
+
+### API Documentation
+- **Endpoint descriptions**: Clear description of each endpoint
+- **Request/response examples**: Include sample requests and responses
+- **Error codes**: Document all possible error responses
+- **Authentication**: Explain authentication requirements
+
+## Security Best Practices
+
+### Input Validation
+- **Validate all inputs**: Check data types, ranges, and formats
+- **Sanitize user input**: Remove or escape dangerous characters
+- **Use parameterized queries**: Prevent SQL injection
+- **Validate file uploads**: Check file types, sizes, and content
+
+### Authentication & Authorization
+- **Use strong authentication**: Implement proper password policies
+- **Session management**: Use secure session handling
+- **Access control**: Implement proper authorization checks
+- **API security**: Use API keys, OAuth, or JWT tokens
+
+### Data Protection
+- **Encrypt sensitive data**: Use encryption for data at rest and in transit
+- **Secure configuration**: Never commit secrets to version control
+- **Environment variables**: Use environment variables for sensitive config
+- **Regular updates**: Keep dependencies updated for security patches
+
+## Performance & Optimization
+
+### Code Performance
+- **Efficient algorithms**: Choose appropriate algorithms for the task
+- **Avoid premature optimization**: Profile before optimizing
+- **Use caching**: Implement caching for expensive operations
+- **Database optimization**: Use proper indexing and query optimization
+
+### Resource Management
+- **Memory management**: Avoid memory leaks and excessive memory usage
+- **Connection pooling**: Use connection pooling for database connections
+- **Async operations**: Use async/await for I/O operations
+- **Resource cleanup**: Properly close files, connections, and resources
+
+### Monitoring & Logging
+- **Structured logging**: Use structured logging with appropriate levels
+- **Performance monitoring**: Monitor response times and resource usage
+- **Error tracking**: Implement proper error tracking and alerting
+- **Health checks**: Implement health check endpoints
+
+## Testing Standards
+
+### Test Coverage
+- **Unit tests**: Test individual functions and methods
+- **Integration tests**: Test component interactions
+- **End-to-end tests**: Test complete user workflows
+- **Performance tests**: Test under load and stress conditions
+
+### Test Quality
+- **Test isolation**: Tests should not depend on each other
+- **Mock external dependencies**: Use mocks for external services
+- **Test data**: Use consistent test data and fixtures
+- **Assertions**: Use clear, descriptive assertions
+
+### Continuous Integration
+- **Automated testing**: Run tests on every commit
+- **Code quality checks**: Run linting and static analysis
+- **Security scanning**: Scan for vulnerabilities
+- **Deployment testing**: Test deployment processes
+
+## Code Quality & Maintainability
+
+### Code Organization
+- **Single responsibility**: Each function/class should have one purpose
+- **DRY principle**: Don't repeat yourself
+- **Separation of concerns**: Separate business logic from presentation
+- **Modular design**: Design for reusability and testability
+
+### Naming Conventions
+- **Descriptive names**: Use clear, descriptive variable and function names
+- **Consistent style**: Follow language-specific naming conventions
+- **Avoid abbreviations**: Use full words instead of abbreviations
+- **Boolean naming**: Use `is_`, `has_`, `can_` prefixes for booleans
+
+### Error Handling
+- **Graceful degradation**: Handle errors without crashing
+- **Meaningful error messages**: Provide helpful error information
+- **Logging**: Log errors with appropriate context
+- **User feedback**: Provide clear feedback to users
+
+## Development Workflow
+
+### Code Review Process
+- **Review checklist**: Use consistent review criteria
+- **Automated checks**: Run automated quality checks
+- **Security review**: Include security considerations
+- **Performance review**: Consider performance implications
+
+### Development Environment
+- **Consistent setup**: Use consistent development environments
+- **Dependency management**: Use proper dependency management
+- **IDE configuration**: Share IDE configuration files
+- **Code formatting**: Use automated code formatting
+
+### Deployment & DevOps
+- **Infrastructure as code**: Use version-controlled infrastructure
+- **Automated deployment**: Implement automated deployment pipelines
+- **Environment management**: Separate development, staging, and production
+- **Monitoring**: Implement comprehensive monitoring and alerting
+
+## Accessibility & Usability
+
+### User Experience
+- **Intuitive interfaces**: Design for ease of use
+- **Clear feedback**: Provide clear feedback for user actions
+- **Error recovery**: Help users recover from errors
+- **Performance**: Ensure responsive user interfaces
+
+### Accessibility
+- **WCAG compliance**: Follow web accessibility guidelines
+- **Keyboard navigation**: Support keyboard-only navigation
+- **Screen readers**: Ensure compatibility with screen readers
+- **Color contrast**: Use appropriate color contrast ratios
+
+## Internationalization
+
+### Multi-language Support
+- **Text externalization**: Externalize all user-facing text
+- **Character encoding**: Use UTF-8 encoding
+- **Date/time formatting**: Use locale-appropriate formatting
+- **Number formatting**: Use locale-appropriate number formatting
+
+### Cultural Considerations
+- **Date formats**: Support different date formats
+- **Currency**: Support different currency formats
+- **Text direction**: Support right-to-left languages
+- **Cultural sensitivity**: Be aware of cultural differences

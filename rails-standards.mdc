@@ -1,0 +1,103 @@
+---
+globs: Taco-Price-Index/**/*.rb,Taco-Price-Index/**/*.erb,Taco-Price-Index/**/*.js
+description: Ruby on Rails coding standards and conventions for Taco Price Index
+---
+
+# Rails Coding Standards for Taco Price Index
+
+## Ruby Style & Formatting
+- **Follow Ruby style guide** and use `rubocop-rails-omakase` for linting
+- **Use 2 spaces** for indentation (no tabs)
+- **Line length**: Keep lines under 120 characters when possible
+- **Use meaningful variable names** and follow Ruby naming conventions
+- **Prefer single quotes** for strings unless interpolation is needed
+
+## Rails Conventions
+
+### Model Organization
+- **Models**: Located in [app/models/](mdc:Taco-Price-Index/app/models/)
+- **Key models**: Restaurant, Taco, Photo, Review
+- **Use associations** properly (belongs_to, has_many, has_one)
+- **Add validations** for data integrity
+- **Use scopes** for common queries
+
+### Controller Standards
+- **Controllers**: Located in [app/controllers/](mdc:Taco-Price-Index/app/controllers/)
+- **Follow RESTful conventions** (index, show, new, create, edit, update, destroy)
+- **Use strong parameters** for mass assignment protection
+- **Keep controllers thin** - move business logic to models or services
+- **Use before_action** for common setup and authentication
+
+### View Standards
+- **Views**: Located in [app/views/](mdc:Taco-Price-Index/app/views/)
+- **Use ERB templates** with proper indentation
+- **Use partials** for reusable view components
+- **Follow Rails view naming conventions**
+- **Use Bootstrap classes** for styling (Bootstrap 5.3.0)
+
+### Database & Migrations
+- **Migrations**: Located in [db/migrate/](mdc:Taco-Price-Index/db/migrate/)
+- **Use descriptive migration names**
+- **Add indexes** for frequently queried columns
+- **Use foreign keys** for referential integrity
+- **Seed data**: Use [db/seeds.rb](mdc:Taco-Price-Index/db/seeds.rb) for initial data
+
+## Frontend Standards
+
+### JavaScript & Stimulus
+- **Use Stimulus controllers** for interactive behavior
+- **JavaScript files**: Located in [app/javascript/](mdc:Taco-Price-Index/app/javascript/)
+- **Use ES6+ syntax** and modern JavaScript features
+- **Follow Stimulus conventions** for controller naming and structure
+
+### CSS & Styling
+- **Use Bootstrap 5.3.0** for styling framework
+- **Custom CSS**: Place in [app/assets/stylesheets/](mdc:Taco-Price-Index/app/assets/stylesheets/)
+- **Use SCSS** for advanced styling features
+- **Follow BEM methodology** for custom CSS classes
+
+## Security Best Practices
+- **Use Devise** for authentication (configured in [Gemfile](mdc:Taco-Price-Index/Gemfile))
+- **Protect against CSRF** attacks (Rails default)
+- **Use strong parameters** in controllers
+- **Validate all user inputs**
+- **Use HTTPS** in production
+- **Run Brakeman** for security analysis
+
+## Testing Standards
+- **Use Rails testing framework** (Minitest)
+- **Write model tests** for validations and associations
+- **Write controller tests** for actions and responses
+- **Write system tests** for user interactions
+- **Use Capybara** for integration testing
+- **Test files**: Located in [test/](mdc:Taco-Price-Index/test/)
+
+## Configuration & Environment
+- **Environment files**: Use [config/](mdc:Taco-Price-Index/config/) directory
+- **Use dotenv** for environment variables in development
+- **Database**: SQLite for development, PostgreSQL for production
+- **Use Kamal** for deployment (configured in [Gemfile](mdc:Taco-Price-Index/Gemfile))
+
+## API Integration
+- **Google Places API**: Used for taco data collection
+- **Geocoding**: Use Geocoder gem for location services
+- **API keys**: Store in environment variables, never commit to repository
+
+## Performance Considerations
+- **Use database indexes** for frequently queried columns
+- **Implement pagination** for large datasets
+- **Use caching** where appropriate
+- **Optimize N+1 queries** with includes/joins
+- **Use background jobs** for long-running tasks
+
+## Code Organization
+- **Use concerns** for shared functionality
+- **Create service objects** for complex business logic
+- **Use form objects** for complex forms
+- **Organize by feature** when the app grows larger
+
+## Documentation
+- **Document complex business logic**
+- **Use meaningful commit messages**
+- **Update README.md** when adding new features
+- **Document API endpoints** if building API functionality

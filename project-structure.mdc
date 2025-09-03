@@ -1,0 +1,52 @@
+---
+alwaysApply: true
+description: Project structure and navigation guide for the multi-project workspace
+---
+
+# Multi-Project Workspace Structure
+
+This workspace contains multiple distinct projects with different purposes and technologies:
+
+## 🧠 C-H-A-R-L-O-T-T-E (Security Framework)
+**Location**: [C-H-A-R-L-O-T-T-E/](mdc:C-H-A-R-L-O-T-T-E/)
+**Purpose**: Cybernetic Heuristic Assistant for Recon, Logic, Offensive Tactics, Triage & Exploitation
+**Tech Stack**: Python 3.9+, modular plugin architecture
+**Key Files**:
+- [core/main.py](mdc:C-H-A-R-L-O-T-T-E/core/main.py) - Main entry point
+- [core/plugin_manager.py](mdc:C-H-A-R-L-O-T-T-E/core/plugin_manager.py) - Plugin system
+- [plugins/](mdc:C-H-A-R-L-O-T-T-E/plugins/) - Modular security tools
+- [cli.py](mdc:C-H-A-R-L-O-T-T-E/cli.py) - CLI interface
+
+## 🌮 Taco Price Index (Rails App)
+**Location**: [Taco-Price-Index/](mdc:Taco-Price-Index/)
+**Purpose**: Ruby on Rails application for tracking taco prices in San Antonio
+**Tech Stack**: Ruby on Rails 8.0, PostgreSQL, Bootstrap, Stimulus
+**Key Files**:
+- [app/controllers/](mdc:Taco-Price-Index/app/controllers/) - Rails controllers
+- [app/models/](mdc:Taco-Price-Index/app/models/) - Data models
+- [Gemfile](mdc:Taco-Price-Index/Gemfile) - Ruby dependencies
+
+## 🐚 Scripts Collection (Automation)
+**Location**: [scripts/](mdc:scripts/) (root level)
+**Purpose**: Personal automation scripts and utilities
+**Tech Stack**: Shell scripts, Node.js, Python
+**Key Files**:
+- [package.json](mdc:package.json) - Node.js dependencies
+- [pyproject.toml](mdc:pyproject.toml) - Python configuration
+- Various shell scripts for automation
+
+## 🐳 Docker Learning
+**Location**: [docker-fundamentals/](mdc:docker-fundamentals/)
+**Purpose**: Docker learning materials and examples
+**Tech Stack**: Docker, containerization examples
+
+## 🧠 LLM Learning
+**Location**: [build-a-large-language-model-from-scratch/](mdc:build-a-large-language-model-from-scratch/)
+**Purpose**: Educational materials for building LLMs from scratch
+**Tech Stack**: Python, machine learning
+
+## Navigation Tips
+- Each project has its own README.md with specific setup instructions
+- CHARLOTTE uses a plugin-based architecture - check [plugins/](mdc:C-H-A-R-L-O-T-T-E/plugins/) for available tools
+- Rails app follows standard Rails conventions with models, views, controllers
+- Scripts directory contains utility scripts for various automation tasks

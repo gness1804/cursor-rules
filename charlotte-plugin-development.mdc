@@ -1,0 +1,218 @@
+---
+globs: C-H-A-R-L-O-T-T-E/plugins/**/*.py,C-H-A-R-L-O-T-T-E/plugins/**/*.yaml
+description: Plugin development guidelines and best practices for CHARLOTTE security framework
+---
+
+# CHARLOTTE Plugin Development Guide
+
+## Plugin Architecture Overview
+
+CHARLOTTE uses a flexible plugin system supporting both **static** and **dynamic** plugins for modular security tool integration.
+
+### Plugin Types
+
+#### Static Plugins (Recommended)
+- **Registration**: Registered in [core/plugin_manager.py](mdc:C-H-A-R-L-O-T-T-E/core/plugin_manager.py) via `PLUGIN_REGISTRY`
+- **Location**: Organized in [plugins/](mdc:C-H-A-R-L-O-T-T-E/plugins/) subdirectories
+- **Entry Point**: Use `run(args)` or `run_plugin(args=None)` function
+- **Aliases**: Map menu labels to registry keys in `ALIASES`
+
+#### Dynamic Plugins
+- **Discovery**: Auto-discovered by scanning for `plugin.yaml` files
+- **Metadata**: Loaded from `plugin.yaml` (label, description, entry_point)
+- **Entry Point**: Specified as `module.submodule:function` format
+
+## Plugin Categories
+
+### Recon Plugins
+- **Location**: [plugins/recon/](mdc:C-H-A-R-L-O-T-T-E/plugins/recon/)
+- **Purpose**: Subdomain enumeration, port scanning, passive intel gathering
+- **Examples**: OWASP Amass, Nmap, HTTP banner grabbing
+- **Chain**: Often feed into exploitation plugins
+
+### Exploitation Plugins
+- **Location**: [plugins/exploitation/](mdc:C-H-A-R-L-O-T-T-E/plugins/exploitation/)
+- **Purpose**: Payload crafting, fuzzing, exploit generation
+- **Examples**: Command injection, buffer overflow, web vulnerabilities
+- **Chain**: Use recon data to generate targeted exploits
+
+### Reverse Engineering Plugins
+- **Location**: [plugins/re/](mdc:C-H-A-R-L-O-T-T-E/plugins/re/)
+- **Purpose**: Binary analysis, symbolic tracing, decompilation
+- **Examples**: Ghidra integration, Binary Ninja, string analysis
+- **Chain**: Analyze binaries for vulnerabilities
+
+### Vulnerability Scanning
+- **Location**: [plugins/vulnscan/](mdc:C-H-A-R-L-O-T-T-E/plugins/vulnscan/)
+- **Purpose**: Automated vulnerability detection
+- **Examples**: Nessus, Burp Suite, custom web scanners
+- **Chain**: Feed findings into triage system
+
+## Plugin Development Standards
+
+### File Structure
+```
+plugins/
+├── category/
+│   ├── plugin_name/
+│   │   ├── __init__.py          # Plugin registration
+│   │   ├── plugin.yaml          # Dynamic plugin metadata
+│   │   ├── main_plugin.py       # Core plugin logic
+│   │   └── helpers/             # Utility functions
+│   └── another_plugin/
+│       ├── __init__.py
+│       └── plugin.py
+```
+
+### Plugin `__init__.py` Structure
+```python
+# Static Style (Recommended)
+__all__ = [
+    "plugin_one",
+    "plugin_two", 
+    "plugin_three",
+]
+
+PLUGIN_PKG_VERSION = "0.1.0"
+```
+
+### Dynamic Plugin `plugin.yaml`
+```yaml
+label: "Plugin Display Name"
+description: "Brief description of plugin functionality"
+entry_point: "plugins.category.plugin_name:main_function"
+dependencies:
+  - "required_package>=1.0.0"
+  - "optional_package"
+```
+
+### Plugin Entry Point Function
+```python
+def run(args: Optional[Dict[str, Any]] = None) -> None:
+    """
+    Main plugin entry point.
+    
+    Args:
+        args: Dictionary of arguments passed to the plugin
+    """
+    if args is None:
+        args = {}
+    
+    try:
+        # Plugin logic here
+        result = process_target(args.get('target'))
+        output_results(result)
+    except Exception as e:
+        logger.error(f"Plugin execution failed: {e}")
+        raise
+```
+
+## Design Principles
+
+### Single Purpose & Chainable
+- **Single Purpose**: Each plugin should do one thing well
+- **Chainable**: Plugins should work together (recon → exploit → triage)
+- **Input/Output**: Use standardized data formats for inter-plugin communication
+- **Modular**: Keep core logic separate from integration code
+
+### Security Considerations
+- **Input Validation**: Validate all inputs before processing
+- **Output Sanitization**: Sanitize outputs to prevent injection attacks
+- **Error Handling**: Don't expose sensitive information in error messages
+- **Resource Limits**: Implement timeouts and resource limits
+- **Sandboxing**: Consider sandboxing for potentially dangerous operations
+
+### Performance & Reliability
+- **Async Support**: Use async/await for I/O operations when possible
+- **Progress Reporting**: Provide progress updates for long-running operations
+- **Resume Capability**: Support resuming interrupted operations
+- **Caching**: Implement caching for expensive operations
+- **Rate Limiting**: Respect API rate limits and implement backoff
+
+## Integration Guidelines
+
+### LLM Integration
+- **Use [core/llm_interface.py](mdc:C-H-A-R-L-O-T-T-E/core/llm_interface.py)**: For LLM interactions
+- **Prompt Engineering**: Design effective prompts for security tasks
+- **Context Management**: Provide relevant context to LLMs
+- **Fallback Handling**: Handle LLM failures gracefully
+
+### Data Management
+- **Findings Storage**: Store results in [data/findings.json](mdc:C-H-A-R-L-O-T-T-E/data/findings.json)
+- **Structured Output**: Use consistent JSON schema for findings
+- **Metadata**: Include timestamps, plugin version, and execution context
+- **Data Validation**: Validate data before storage
+
+### Configuration Management
+- **Use [core/config.py](mdc:C-H-A-R-L-O-T-T-E/core/config.py)**: For configuration access
+- **Environment Variables**: Use env vars for sensitive configuration
+- **Default Values**: Provide sensible defaults for all options
+- **Validation**: Validate configuration on startup
+
+## Testing & Quality Assurance
+
+### Unit Testing
+- **Test Coverage**: Aim for high test coverage
+- **Mock External Dependencies**: Mock APIs and external services
+- **Test Edge Cases**: Test error conditions and edge cases
+- **Performance Testing**: Test with realistic data sizes
+
+### Integration Testing
+- **Plugin Loading**: Test plugin discovery and loading
+- **Data Flow**: Test data flow between plugins
+- **Error Propagation**: Test error handling across plugin boundaries
+- **Configuration**: Test with different configuration scenarios
+
+### Security Testing
+- **Input Fuzzing**: Test with malformed inputs
+- **Output Validation**: Verify outputs are properly sanitized
+- **Resource Exhaustion**: Test behavior under resource constraints
+- **Permission Testing**: Test with different permission levels
+
+## Documentation Requirements
+
+### Plugin Documentation
+- **README**: Include setup instructions and usage examples
+- **API Documentation**: Document all public functions and classes
+- **Configuration**: Document all configuration options
+- **Dependencies**: List all required dependencies and versions
+
+### Code Documentation
+- **Docstrings**: Include docstrings for all public functions
+- **Type Hints**: Use type hints for better code understanding
+- **Comments**: Add comments for complex logic
+- **Examples**: Include usage examples in docstrings
+
+## Deployment & Distribution
+
+### Plugin Packaging
+- **Version Management**: Use semantic versioning
+- **Dependency Management**: Specify exact dependency versions
+- **Installation**: Provide easy installation instructions
+- **Updates**: Support plugin updates and migrations
+
+### Registry Integration
+- **Plugin Discovery**: Ensure plugins are discoverable
+- **Metadata**: Provide complete metadata for plugin registry
+- **Compatibility**: Test compatibility with different CHARLOTTE versions
+- **Documentation**: Keep documentation up to date
+
+## Best Practices
+
+### Code Quality
+- **Follow PEP8**: Use Python style guidelines
+- **Use Type Hints**: Improve code readability and IDE support
+- **Error Handling**: Implement comprehensive error handling
+- **Logging**: Use structured logging for debugging
+
+### User Experience
+- **Clear Output**: Provide clear, actionable output
+- **Progress Indicators**: Show progress for long operations
+- **Help Text**: Provide helpful error messages and usage hints
+- **Consistency**: Follow CHARLOTTE's UI/UX patterns
+
+### Maintenance
+- **Regular Updates**: Keep dependencies updated
+- **Security Patches**: Apply security patches promptly
+- **Performance Monitoring**: Monitor plugin performance
+- **User Feedback**: Incorporate user feedback and bug reports
