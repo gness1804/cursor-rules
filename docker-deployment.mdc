@@ -1,0 +1,54 @@
+---
+globs: Dockerfile,docker-compose.yml,*.dockerfile
+description: Docker and containerization conventions
+---
+
+# Docker and Deployment Rules
+
+## Dockerfile Best Practices
+- Use multi-stage builds for optimization
+- Use specific base image versions
+- Minimize layers and image size
+- Use .dockerignore to exclude unnecessary files
+
+## Container Security
+- Run containers as non-root users
+- Use minimal base images
+- Keep base images updated
+- Scan images for vulnerabilities
+
+## Environment Configuration
+- Use environment variables for configuration
+- Implement proper secret management
+- Use different configurations for different environments
+- Document required environment variables
+
+## Build Optimization
+- Use build cache effectively
+- Order Dockerfile instructions for optimal caching
+- Use multi-stage builds to reduce final image size
+- Clean up package managers and temporary files
+
+## Docker Compose
+- Use version-specific compose files
+- Implement proper service dependencies
+- Use named volumes for data persistence
+- Implement proper networking between services
+
+## Deployment Patterns
+- Use container orchestration (ECS, Kubernetes)
+- Implement proper health checks
+- Use rolling deployments for zero-downtime
+- Implement proper monitoring and logging
+
+## Development Workflow
+- Use docker-compose for local development
+- Implement hot reloading where possible
+- Use volume mounts for development
+- Implement proper debugging capabilities
+
+## Production Considerations
+- Use production-optimized images
+- Implement proper resource limits
+- Use proper logging and monitoring
+- Implement backup and recovery procedures

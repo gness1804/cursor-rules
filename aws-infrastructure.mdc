@@ -1,0 +1,61 @@
+---
+description: USE WHEN authoring or reviewing AWS infrastructure (CloudFormation, CDK, IaC), security, or deployments
+globs: **/cloudformation/**/*,**/*.yml,**/*.yaml
+alwaysApply: false
+---
+
+# AWS Infrastructure Rules
+
+## Infrastructure as Code
+- Use AWS CDK for TypeScript-based infrastructure
+- Use CloudFormation for YAML-based templates
+- Follow consistent naming conventions across resources
+- Implement proper tagging strategies
+
+## CDK Patterns
+- Use constructs for reusable components
+- Implement proper stack organization
+- Use environment-specific configurations
+- Follow CDK best practices for resource management
+
+## Security Groups
+- Implement least-privilege access principles
+- Use descriptive names and tags
+- Document security group purposes
+- Implement proper ingress/egress rules
+
+## Lambda Functions
+- Use appropriate runtime versions
+- Implement proper error handling and logging
+- Use environment variables for configuration
+- Follow Lambda best practices for performance
+
+## S3 Buckets
+- Implement proper bucket policies
+- Use versioning and lifecycle policies
+- Implement proper encryption
+- Use cross-region replication where needed
+
+## Networking
+- Use VPCs for network isolation
+- Implement proper subnet organization
+- Use security groups for access control
+- Document network architecture
+
+## Monitoring and Logging
+- Use CloudWatch for monitoring
+- Implement proper log aggregation
+- Use structured logging
+- Set up appropriate alarms and notifications
+
+## Deployment
+- Use CI/CD pipelines for deployment
+- Implement proper environment promotion
+- Use infrastructure testing
+- Follow change management procedures
+
+## Cost Optimization
+- Use appropriate instance types
+- Implement auto-scaling where applicable
+- Use spot instances for non-critical workloads
+- Monitor and optimize costs regularly

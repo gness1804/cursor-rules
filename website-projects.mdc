@@ -1,0 +1,60 @@
+---
+globs: **/*.svelte,**/*.js,**/*.ts,**/*.css,**/*.html,**/*.json
+description: Website and frontend project conventions
+---
+
+# Website Project Rules
+
+## Svelte/SvelteKit Projects
+- Use SvelteKit for routing and SSR capabilities
+- Follow component-based architecture patterns
+- Use stores for state management
+- Implement proper error boundaries and loading states
+
+## GraphQL Integration
+- Use GraphQL for API communication
+- Implement proper error handling for GraphQL queries
+- Use fragments for reusable query parts
+- Implement proper caching strategies
+
+## Styling
+- Use Tailwind CSS for utility-first styling
+- Follow consistent design system patterns
+- Use CSS custom properties for theming
+- Implement responsive design principles
+
+## Performance
+- Optimize bundle sizes with proper code splitting
+- Use lazy loading for non-critical components
+- Implement proper image optimization
+- Use CDN for static assets
+
+## SEO and Accessibility
+- Implement proper meta tags and structured data
+- Use semantic HTML elements
+- Ensure proper ARIA labels and roles
+- Implement proper focus management
+
+## Testing
+- Use Vitest for unit testing
+- Implement component testing
+- Use Playwright for E2E testing
+- Test accessibility compliance
+
+## Build and Deployment
+- Use Vite for build tooling
+- Implement proper environment variable handling
+- Use Docker for containerization
+- Follow CI/CD best practices
+
+## Content Management
+- Use Contentful for content management
+- Implement proper content validation
+- Use proper content types and schemas
+- Implement content preview functionality
+
+## Security
+- Implement proper CSP headers
+- Use HTTPS everywhere
+- Sanitize user inputs
+- Implement proper authentication flows

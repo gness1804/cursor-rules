@@ -1,0 +1,54 @@
+---
+globs: /Users/graham/scripts/**/*
+description: Personal automation scripts and utilities conventions
+---
+
+# Personal Scripts Rules
+
+## Script Organization
+- Keep scripts focused on single responsibilities
+- Use descriptive names that indicate purpose
+- Organize related scripts in subdirectories
+- Maintain version history in `_dir` folders
+
+## Todoist Integration
+- Use consistent API patterns for Todoist operations
+- Implement proper error handling for API calls
+- Use environment variables for API tokens
+- Include helpful user feedback
+
+## AWS Scripts
+- Use AWS CLI with proper profiles and regions
+- Include comprehensive error handling
+- Use jq for JSON processing and formatting
+- Implement dry-run options where appropriate
+
+## Git Scripts
+- Use consistent git workflow patterns
+- Include safety checks for uncommitted changes
+- Provide helpful error messages and usage information
+- Use proper git hooks integration
+
+## Development Utilities
+- Use Node.js for cross-platform compatibility
+- Implement proper CLI argument parsing
+- Use chalk for colored output and user feedback
+- Include help/usage information
+
+## File Management
+- Use consistent naming conventions
+- Implement proper backup and recovery
+- Use temporary directories for processing
+- Clean up temporary files
+
+## Error Handling
+- Use proper exit codes (0 for success, non-zero for errors)
+- Include context in error messages
+- Implement retry logic for transient failures
+- Use structured logging where appropriate
+
+## User Experience
+- Provide clear feedback and progress indicators
+- Use consistent output formatting
+- Include help and usage information
+- Implement confirmation prompts for destructive operations

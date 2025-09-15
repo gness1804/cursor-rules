@@ -1,0 +1,52 @@
+---
+globs: *.sh,*.bash
+description: Shell scripting conventions and best practices
+---
+
+# Shell Script Conventions
+
+## Script Structure
+- Start with proper shebang: `#!/bin/bash` or `#!/bin/zsh`
+- Include script description and usage information
+- Use `set -e` to exit on errors
+- Use `set -u` to exit on undefined variables
+- Use `set -o pipefail` for proper pipe error handling
+
+## Naming and Organization
+- Use kebab-case for script names
+- Keep scripts focused on single responsibilities
+- Use descriptive names that indicate purpose
+- Organize related scripts in subdirectories
+
+## Error Handling
+- Use proper exit codes (0 for success, non-zero for errors)
+- Include error messages with context
+- Use `trap` for cleanup operations
+- Validate inputs and dependencies
+
+## Personal Automation Scripts
+- Use consistent patterns across scripts
+- Include help/usage information
+- Use environment variables for configuration
+- Implement dry-run options where appropriate
+
+## AWS Scripts
+- Use AWS CLI with proper profiles
+- Include region specification
+- Implement proper error handling for AWS operations
+- Use jq for JSON processing
+- Include output formatting for readability
+
+## Git Scripts
+- Use consistent git workflow patterns
+- Include safety checks (e.g., uncommitted changes)
+- Provide helpful error messages
+- Use proper git hooks integration
+
+## Best Practices
+- Quote variables to prevent word splitting
+- Use arrays for multiple values
+- Prefer functions over repeated code
+- Include logging for debugging
+- Use proper indentation and formatting
+- Comment complex logic

@@ -1,0 +1,60 @@
+---
+globs: *.js,*.ts,*.svelte
+description: JavaScript/TypeScript/Svelte coding standards and conventions
+---
+
+# JavaScript/TypeScript/Svelte Conventions
+
+## Code Style
+- Use ESLint and Prettier for code formatting (see [package.json](mdc:package.json))
+- Follow consistent naming: camelCase for variables, PascalCase for components
+- Use semicolons consistently
+- Prefer const/let over var
+- Use TypeScript for type safety where applicable
+
+## Project-Specific Patterns
+
+### Svelte Projects (inside-rx-website, just-rx-website)
+- Use SvelteKit for routing and SSR
+- Follow component-based architecture
+- Use stores for state management
+- Implement proper error boundaries
+- Use Tailwind CSS for styling
+
+### Node.js Backend (saas-server)
+- Use TypeScript for type safety
+- Follow RESTful API patterns
+- Use proper middleware for authentication/authorization
+- Implement proper error handling and logging
+- Use dependency injection patterns
+
+### Personal Scripts
+- Use Node.js with ES modules where possible
+- Follow CLI best practices with proper argument parsing
+- Use chalk for colored output
+- Implement proper error handling with user-friendly messages
+
+## Package Management
+- Use npm for package management
+- Keep package-lock.json committed
+- Use semantic versioning
+- Separate dev and production dependencies
+
+## Testing
+- Use Vitest for testing (configured in projects)
+- Write unit tests for business logic
+- Use mocking for external dependencies
+- Include integration tests for critical paths
+
+## Build and Deployment
+- Use Vite for build tooling
+- Implement proper environment variable handling
+- Use Docker for containerization
+- Follow CI/CD best practices
+
+## Security
+- Sanitize user inputs
+- Use proper authentication mechanisms
+- Implement CORS policies
+- Keep dependencies updated
+- Use environment variables for secrets

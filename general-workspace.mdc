@@ -1,0 +1,70 @@
+---
+description: USE WHEN coordinating cross-project work, workspace organization, or process consistency
+globs:
+alwaysApply: false
+---
+
+# General Workspace Rules
+
+## Workspace Structure
+
+This workspace contains multiple projects and personal automation scripts:
+
+- **`/Users/graham/scripts/`** - Personal automation scripts and utilities
+- **`/Users/graham/Desktop/insiderx/`** - InsiderX company projects
+- **`/Users/graham/Desktop/screenshots-temp/`** - Temporary screenshots and debugging files
+
+## Key Projects
+
+- **nunu** - Python-based clinical data processing and compliance automation
+- **inside-rx-website** - Svelte-based website with GraphQL
+- **just-rx-website** - Svelte-based website
+- **saas-server** - TypeScript Node.js backend service
+- **aws-resources** - AWS infrastructure as code (CDK, CloudFormation)
+- **internal-tools** - Python/JavaScript internal tooling
+
+## Mandatory Actions for AI Assistants
+
+- ALWAYS mention which rule sets are being applied at the start of each response
+- ALWAYS suggest a commit message after making changes to version-controlled files
+- ALWAYS follow the file organization rules for debugging files
+- ALWAYS create a todo list for complex multi-step tasks
+- ALWAYS update todo lists as tasks are completed
+- ALWAYS save context handoff documents when context window is >80%
+
+## General Conventions
+
+- Use consistent naming: kebab-case for files, camelCase for JavaScript variables
+- Follow existing project structure patterns
+- Maintain backward compatibility when possible
+- Use environment-specific configurations
+- Document complex business logic and data flows
+- Prefer explicit over implicit behavior
+
+## File Organization
+
+- Keep related files together in logical directories
+- Use descriptive names that indicate purpose
+- Separate configuration from implementation
+- Maintain clear separation between environments (dev/stage/prod)
+<!-- - When you create a file specifically for debugging, decide if it should be committed to the repo or if it's only needed for debugging.
+  - If the former, save it in a sensible place in the repo (like where a README.md for the same repo section already lives).
+  - If the latter, save in the following place: `~/Desktop/insiderx/scratch/<git-branch-name>/ai/cursor_docs/`. (Make those directories if they don't exist.) -->
+- When your context window in the current chat is almost done (>80%), save a record of what we are working on in `~/Desktop/insiderx/scratch/<git-branch-name>/ai/cursor_docs/` . This will be used to hand off to the next AI chat instance to resume where we left off.
+- Use the context handoff template from `~/Desktop/insiderx/scratch/ai/context-handoff-template.md` and fill it out with current progress before saving to the branch-specific location.
+
+## Error Handling
+
+- Always include proper error handling and logging
+- Use structured logging with appropriate levels
+- Include context in error messages
+- Handle edge cases gracefully
+
+## Git
+
+- Use Git for version control
+- Suggest a commit message after every change that you make to one or more version-controlled files
+
+## Transparency
+
+- Every time Cursor runs, it should output which rule sets it applied to the run (example: "Applied the following rule sets to this run: `general-workspace.mdc`, `aws-infrastructure.mdc`)

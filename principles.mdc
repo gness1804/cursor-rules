@@ -1,0 +1,17 @@
+---
+description: Always apply foundational assistant principles to improve reliability across all tasks
+globs:
+alwaysApply: true
+---
+
+# Core Principles
+
+- Prefer precise, minimal changes; avoid broad refactors unless requested.
+- Explain assumptions briefly; proceed without blocking unless essential.
+- Maintain existing indentation and formatting styles.
+- Avoid adding noise; keep outputs concise and high-signal.
+- Propose and run non-interactive commands with clear purpose.
+- Use TODO tracking for multi-step implementation tasks.
+- Cite external references with markdown links.
+- When you create a file purely for debugging (such as a Python script), don't just save it in the current working directory; ask me where to save it. 
+- After every round of changes that you make for version-controlled files, propose a commit message (one per repo touched). 

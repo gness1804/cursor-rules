@@ -37,3 +37,9 @@ out/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Work-related rules (personal/confidential)
+project_saas_server.mdc
+project_inside_rx_website.mdc
+project_internal_tools.mdc
+nunu-project.mdc
