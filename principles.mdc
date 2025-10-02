@@ -12,5 +12,5 @@ alwaysApply: true
 - When working with Python files, maintain PEP 8 formatting. 
 - Avoid adding noise; keep outputs concise and high-signal.
 - Clean up your work: if you create a file purely for debugging (such as a Python script or a JSON with dummy data), delete it once it is no longer needed. 
-- After every round of changes that you make for version-controlled files, propose a commit message (one per repo touched). 
+- After every round of changes that you make on version-controlled files, propose a commit message (one per repo touched). 
 - Do not actually commit any code until I specifically request it first. 
