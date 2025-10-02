@@ -12,6 +12,9 @@ NC='\033[0m' # No Color
 
 echo -e "${BLUE}🚀 Installing Cursor rules...${NC}"
 
+# Save the directory where this script is located (before changing directories)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # Determine workspace root
 WORKSPACE_ROOT=""
 CURRENT_DIR="$(pwd)"
@@ -65,12 +68,18 @@ if [ -d ".cursor/rules" ] && [ "$(ls -A .cursor/rules 2>/dev/null)" ]; then
 fi
 
 # Copy rules from this repository
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# SCRIPT_DIR was already set at the beginning of the script
 
 if [ -d "$SCRIPT_DIR" ]; then
-    echo -e "${GREEN}📋 Copying Cursor rules...${NC}"
-    cp -r "$SCRIPT_DIR"/*.mdc .cursor/rules/
-    echo -e "${GREEN}✅ Cursor rules installed successfully!${NC}"
+    echo -e "${GREEN}📋 Copying Cursor rules from $SCRIPT_DIR...${NC}"
+    # Check if .mdc files exist in the script directory
+    if ls "$SCRIPT_DIR"/*.mdc 1> /dev/null 2>&1; then
+        cp -r "$SCRIPT_DIR"/*.mdc .cursor/rules/
+        echo -e "${GREEN}✅ Cursor rules installed successfully!${NC}"
+    else
+        echo -e "${RED}❌ No .mdc files found in: $SCRIPT_DIR${NC}"
+        exit 1
+    fi
 else
     echo -e "${RED}❌ Rules source directory not found: $SCRIPT_DIR${NC}"
     exit 1

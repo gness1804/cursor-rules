@@ -6,12 +6,11 @@ alwaysApply: true
 
 # Core Principles
 
-- Prefer precise, minimal changes; avoid broad refactors unless requested.
-- Explain assumptions briefly; proceed without blocking unless essential.
+- Try to attain a good balance between conserving tokens and being thorough. Endeavor to not waste tokens.
+- When you are given a multi-step plan, stop and ask me for permission before undertaking each step unless I say otherwise.
 - Maintain existing indentation and formatting styles.
+- When working with Python files, maintain PEP 8 formatting. 
 - Avoid adding noise; keep outputs concise and high-signal.
-- Propose and run non-interactive commands with clear purpose.
-- Use TODO tracking for multi-step implementation tasks.
-- Cite external references with markdown links.
-- When you create a file purely for debugging (such as a Python script), don't just save it in the current working directory; ask me where to save it. 
+- Clean up your work: if you create a file purely for debugging (such as a Python script or a JSON with dummy data), delete it once it is no longer needed. 
 - After every round of changes that you make for version-controlled files, propose a commit message (one per repo touched). 
+- Do not actually commit any code until I specifically request it first. 
