@@ -15,6 +15,8 @@ alwaysApply: true
 - After every round of changes that you make on version-controlled files, propose a commit message (one per repo touched). 
 - Do not actually commit any code until I specifically request it first. 
 - Keep commit messages short, around one paragraph in most cases. Only add more if enough changes have been made to justify more content. Follow the commit conventions below:
+- Don't make dumb assumptions. If you can't infer something with a reasonable degree of certainty, ask.
+  - Example: one agent assumed that it knew the name of my Github profile just based on my first name. It should've asked what might Github handle was instead.
 
 ## Commit Message Standards
 - **Format**: Use conventional commits format (`type: description`)
