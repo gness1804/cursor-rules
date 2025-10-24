@@ -7,7 +7,7 @@ alwaysApply: true
 # Core Principles
 
 - Try to attain a good balance between conserving tokens and being thorough. Endeavor to not waste tokens.
-- When you are given a multi-step plan, stop and ask me for permission before undertaking each step unless I say otherwise.
+- When you are given a multi-step plan, ALWAYS stop and ask me for permission before undertaking each step unless I say otherwise. NEVER complete any steps until I authorize you to do this.
 - Maintain existing indentation and formatting styles.
 - When working with Python files, maintain PEP 8 formatting. 
 - Avoid adding noise; keep outputs concise and high-signal.
