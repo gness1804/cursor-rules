@@ -7,6 +7,7 @@ alwaysApply: true
 # Core Principles
 
 - Try to attain a good balance between conserving tokens and being thorough. Endeavor to not waste tokens.
+- Relatedly, when an agent creates documentation, it should be efficient about it. Rather than repeating the same things multiple times in different documents, just create one document and give a succinct summary of what you're trying to say.
 - When you are given a multi-step plan, ALWAYS stop and ask me for permission before undertaking each step unless I say otherwise. NEVER complete any steps until I authorize you to do this.
 - Maintain existing indentation and formatting styles.
 - When working with Python files, maintain PEP 8 formatting. 
@@ -14,9 +15,8 @@ alwaysApply: true
 - Clean up your work: if you create a file purely for debugging (such as a Python script or a JSON with dummy data), delete it once it is no longer needed. 
 - After every round of changes that you make on version-controlled files, propose a commit message (one per repo touched). 
 - Do not actually commit any code until I specifically request it first. 
-- Keep commit messages short, around one paragraph in most cases. Only add more if enough changes have been made to justify more content. Follow the commit conventions below:
-- Don't make dumb assumptions. If you can't infer something with a reasonable degree of certainty, ask.
-  - Example: one agent assumed that it knew the name of my Github profile just based on my first name. It should've asked what might Github handle was instead.
+- Keep commit messages short, just one sentence in most cases.
+- Don't make dumb assumptions. If you can't infer something with a reasonable degree of certainty, ask. (Example: one agent tried to find my GitHub repos by looking for the name "grahamcracker" rather than by just asking me what my GitHub handle is.)
 
 ## Commit Message Standards
 - **Format**: Use conventional commits format (`type: description`)
